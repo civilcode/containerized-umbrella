@@ -1,17 +1,24 @@
 # Containerized.Umbrella
 
+## To install on the host
+
+- Docker
+- Git + hub
+- make
+
 ## To-do:
 
-- hub tool
-- dotfiles???
+- create umbrella within the container
+- use official elixir alpine image
+- add bin/app_setup and call it from postCreateCommand
+- COMPOSE_FILE variable?
+
 - bash history
 - bash instead of ash
-- observer (works, but if we were using an image other than Alpine (with obserer compiled in erlang), we could use it directory in VS Code - would just need to see the DISPLAY variable)
+- observer (works, but if we were using an image other than bitwalker/erlang (with observer compiled in erlang), we could use it directory in VS Code - would just need to see the DISPLAY variable)
 - use ENV variables to configure remote container??? (https://code.visualstudio.com/docs/remote/containers-advanced)
-- where do we build the release?
 - put Docker dev config under .devcontainer???
-- postCreateCommand to run commands after the container has been built
-- how to initially generate the elixir app?
+- postCreateCommand to run commands after the container has been built (make app.setup)
 
 
 ## Instructions to create a sample Phoenix app and setting-up VSCode Remote
