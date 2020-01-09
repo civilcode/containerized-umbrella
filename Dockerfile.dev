@@ -1,0 +1,5 @@
+FROM bitwalker/alpine-elixir-phoenix:1.9.2
+
+RUN mix do local.hex --force, local.rebar --force
+
+CMD ["/bin/sh"]

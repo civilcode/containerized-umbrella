@@ -1,0 +1,48 @@
+version: '3'
+
+services:
+  db:
+    image: postgres:10.4
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_USER: postgres
+      PGDATA: /pgdata
+    volumes:
+      - pgdata:/pgdata
+
+  app:
+    image: containerized-dev
+    container_name: containerized-dev__app
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+    volumes:
+      # Let Docker persist dependencies and builds:
+      # * if we blow away Docker this can be easily recreated
+      # * it keeps all build concerns separate from the host operating system
+      # * for compiled dependencies, stop conflicts with different host OS
+      # * maps to a subset of directories in .gitignore
+      - .:/app:cached
+      - build:/app/_build:cached
+      - deps:/app/deps:cached
+      - node_modules:/app/apps/containerized_web/assets/node_modules:cached
+      - static:/app/apps/containerized_web/priv/static:cached
+    ports:
+      - "4000:4000"
+    depends_on:
+      - db
+    tty: true
+
+  erlang:
+    # For using observer through X11 (xquartz on Mac)
+    image: erlang:latest
+    command: sleep infinity
+
+# volumes defined for use in above configuration
+volumes:
+  build:
+  deps:
+  node_modules:
+  pgdata:
+  static:

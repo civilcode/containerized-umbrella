@@ -1,0 +1,13 @@
+{
+  "name": "containerized",
+  "dockerComposeFile": "../docker-compose.yml",
+  "service": "app",
+  "workspaceFolder": "/app",
+  "appPort": 4000,
+  "shutdownAction": "stopCompose",
+  "extensions": [
+    "elixir-lsp.elixir-ls",
+    "ms-vscode.atom-keybindings",
+    "eamodio.gitlens"
+  ]
+}
