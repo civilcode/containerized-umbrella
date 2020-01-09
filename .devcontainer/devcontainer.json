@@ -8,6 +8,7 @@
   "extensions": [
     "elixir-lsp.elixir-ls",
     "ms-vscode.atom-keybindings",
-    "eamodio.gitlens"
+    "eamodio.gitlens",
+    "yzhang.markdown-all-in-one"
   ]
 }
